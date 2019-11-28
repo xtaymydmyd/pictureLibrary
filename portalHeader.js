@@ -3,10 +3,10 @@
     `<template>
         <div class="portalHeader  flex flex-justify-content-between flex-align-items" style="height:44px;">
             <div class="todayInfo" style="height:30px;">
-                <img src="https://xtaymydmyd.github.io/pictureLibrary/logo.png" alt="" style="height:100%">
+                <img src='https://xtaymydmyd.github.io/pictureLibrary/logo.png' alt="" style="height:100%">
             </div>
             <div class="headLeft">
-                <img src="https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png" @click="useScan" class="scan-grey-icon" style="height:18px;">
+                <img src='https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png' @click="useScan" class="scan-grey-icon" style="height:18px;">
             </div>
         </div>
     </template>
