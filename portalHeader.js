@@ -44,19 +44,19 @@
             },
             useJsApi(configParams){
                 parent.wx.config({
-                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                    appId: configParams.appId, // 必填，企业号的唯一标识，此处填写企业号corpid
-                    timestamp: configParams.timestamp, // 必填，生成签名的时间戳
-                    nonceStr: configParams.nonceStr, // 必填，生成签名的随机串
-                    signature: configParams.signature,// 必填，签名，见附录1
-                    jsApiList:  configParams.jsApiList// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    debug: false, 
+                    appId: configParams.appId,
+                    timestamp: configParams.timestamp, 
+                    nonceStr: configParams.nonceStr, 
+                    signature: configParams.signature,
+                    jsApiList:  configParams.jsApiList
                 });
                 parent.wx.error(function(res){
                 //    console.log(res);
                 });
                 parent.wx.ready(function(){
                     parent.wx.getLocation({
-                        type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                        type: 'wgs84', 
                         success: function(res) {
                             var location = {
                                 latitude: res.latitude,
@@ -73,8 +73,8 @@
                 if(constGlobal.isWeChat()){
                     parent.wx.scanQRCode({
                         desc: 'scanQRCode desc',
-                        needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-                        scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                        needResult: 0, 
+                        scanType: ["qrCode","barCode"], 
                         success: function (res) {
                             // console.log(res);
                         },
@@ -85,34 +85,7 @@
                         }
                     });
                 }else{
-                    // cordova调用扫一扫
-                    cordova.plugins.barcodeScanner.scan(  
-                        function (result) {  
-                            var strRegex = /((http|ftp|https|file):\/\/([\w\-]+\.)+[\w\-]+(\/[\w\u4e00-\u9fa5\-\.\/?\@\%\!\&=\+\~\:\#\;\,]*)?)/ig;
-                            var re = new RegExp(strRegex); 
-                            if(re.test(result.text)){
-                            
-                                if( constGlobal.isWeChat()){
-                                    window.location.href = result.text;
-                                }else{
-                                    common.inAppBrowserOpen( result.text )
-                                }
-                            }else{
-                                if(result.text){
-                                    _this.$vux.alert.show({
-                                        title: '识别内容',
-                                        content: result.text,
-                                        onHide () {
-                                            
-                                        }
-                                    })
-                                }                            
-                            }  
-                        },   
-                        function (error) {  
-                            // console.log("Scanning failed: " + error);  
-                        }  
-                    );
+                    
                 }
             }
         }
