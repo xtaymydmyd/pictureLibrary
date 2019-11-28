@@ -85,7 +85,33 @@
                         }
                     });
                 }else{
-                    
+                    cordova.plugins.barcodeScanner.scan(  
+                        function (result) {  
+                            var strRegex = /((http|ftp|https|file):\/\/([\w\-]+\.)+[\w\-]+(\/[\w\u4e00-\u9fa5\-\.\/?\@\%\!\&=\+\~\:\#\;\,]*)?)/ig;
+                            var re = new RegExp(strRegex); 
+                            if(re.test(result.text)){
+                            
+                                if( constGlobal.isWeChat()){
+                                    window.location.href = result.text;
+                                }else{
+                                    common.inAppBrowserOpen( result.text )
+                                }
+                            }else{
+                                if(result.text){
+                                    _this.$vux.alert.show({
+                                        title: '识别内容',
+                                        content: result.text,
+                                        onHide () {
+                                            
+                                        }
+                                    })
+                                }                            
+                            }  
+                        },   
+                        function (error) {  
+                            // console.log("Scanning failed: " + error);  
+                        }  
+                    );
                 }
             }
         }
