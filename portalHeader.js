@@ -3,7 +3,7 @@
     `<template>
         <div class="portalHeader  flex flex-justify-content-between flex-align-items" style="height:44px;">
             <div class="todayInfo" style="height:30px;">
-                <img src='https://xtaymydmyd.github.io/pictureLibrary/logo.png' alt="" style="height:100%">
+                <img src='http://jy-admin.jieyundata.com:18026/group1/M00/00/37/wKhkP13fXkaAdw5yAAUHXO3vUrQ770.png' alt="" style="height:100%">
             </div>
             <div class="headLeft">
                 <img src='https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png' @click="useScan" class="scan-grey-icon" style="height:18px;">
