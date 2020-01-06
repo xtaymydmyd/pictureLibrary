@@ -1,12 +1,12 @@
 ; (function () {
     const portalHeader =
     `<template>
-        <div class="portalHeader  flex flex-justify-content-between flex-align-items" style="height:44px;">
-            <div class="todayInfo" style="height:30px;">
-                <img src='http://jy-admin.jieyundata.com:18026/group1/M00/00/37/wKhkP13fXkaAdw5yAAUHXO3vUrQ770.png' alt="" style="height:100%">
+        <div class='portalHeader  flex flex-justify-content-between flex-align-items' style='height:44px;'>
+            <div class='todayInfo' style='height:30px;'>
+                <img src='http://jy-admin.jieyundata.com:18026/group1/M00/00/37/wKhkP13fXkaAdw5yAAUHXO3vUrQ770.png' alt='' style='height:100%'>
             </div>
-            <div class="headLeft">
-                <img src='https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png' @click="useScan" class="scan-grey-icon" style="height:18px;">
+            <div class='headLeft'>
+                <img src='https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png' @click='useScan' class='scan-grey-icon' style='height:18px;'>
             </div>
         </div>
     </template>
@@ -33,7 +33,7 @@
         },
         methods: {
             querySignature(){
-                var url = constGlobal.HostJSAPISignature +  "signature";
+                var url = constGlobal.HostJSAPISignature +  'signature';
                 http.apiPost(url, {url: window.location.href}).then(res =>{
                     if(res.status == 0){
                         var signatureParams = res.data;
@@ -62,7 +62,7 @@
                                 latitude: res.latitude,
                                 longitude: res.longitude
                             }
-                            sessionStorage.setItem("deviceLocationInfo", JSON.stringify(location));
+                            sessionStorage.setItem('deviceLocationInfo', JSON.stringify(location));
                         }
                     })
                 });
@@ -74,7 +74,7 @@
                     parent.wx.scanQRCode({
                         desc: 'scanQRCode desc',
                         needResult: 0, 
-                        scanType: ["qrCode","barCode"], 
+                        scanType: ['qrCode','barCode'], 
                         success: function (res) {
                             // console.log(res);
                         },
@@ -109,7 +109,7 @@
                             }  
                         },   
                         function (error) {  
-                            // console.log("Scanning failed: " + error);  
+                            // console.log('Scanning failed: ' + error);  
                         }  
                     );
                 }
@@ -117,7 +117,7 @@
         }
     }
     </script>
-    <style lang="css">
+    <style lang='css'>
     .portalHeader {
         background: #fff;
         padding: 0px 15px;
