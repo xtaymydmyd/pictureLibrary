@@ -1,12 +1,12 @@
 ; (function () {
     var portalHeaderExternLinkComponent =
     `<template>
-    <div class="portalHeader  flex flex-justify-content-between flex-align-items" style="height:44px;">
-        <div class="todayInfo" style="height:30px;">
-            <img src="http://jy-admin.jieyundata.com:18026/group1/M00/00/37/wKhkP13fXkaAdw5yAAUHXO3vUrQ770.png" alt="" style="height:100%">
+    <div class='portalHeader  flex flex-justify-content-between flex-align-items' style='height:44px;'>
+        <div class='todayInfo' style='height:30px;'>
+            <img src='http://jy-admin.jieyundata.com:18026/group1/M00/00/37/wKhkP13fXkaAdw5yAAUHXO3vUrQ770.png' alt='' style='height:100%'>
         </div>
-        <div class="headLeft">
-            <img src="https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png" @click="useScan" class="scan-grey-icon" style="height:18px;">
+        <div class='headLeft'>
+            <img src='https://xtaymydmyd.github.io/pictureLibrary/scan_icon1.png' @click='useScan' class='scan-grey-icon' style='height:18px;'>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default{
     },
     methods: {
         querySignature(){
-            var url = constGlobal.HostJSAPISignature +  "signature";
+            var url = constGlobal.HostJSAPISignature +  'signature';
             http.apiPost(url, {url: window.location.href}).then(res =>{
                 if(res.status == 0){
                     var signatureParams = res.data;
@@ -62,7 +62,7 @@ export default{
                             latitude: res.latitude,
                             longitude: res.longitude
                         }
-                        sessionStorage.setItem("deviceLocationInfo", JSON.stringify(location));
+                        sessionStorage.setItem('deviceLocationInfo', JSON.stringify(location));
                     }
                 })
             });
@@ -74,7 +74,7 @@ export default{
                 parent.wx.scanQRCode({
                     desc: 'scanQRCode desc',
                     needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-                    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                    scanType: ['qrCode','barCode'], // 可以指定扫二维码还是一维码，默认二者都有
                     success: function (res) {
                         // console.log(res);
                     },
@@ -92,7 +92,7 @@ export default{
     }
 }
 </script>
-<style lang="css">
+<style lang='css'>
 .portalHeader {
     background: #fff;
     padding: 0px 15px;
@@ -136,36 +136,36 @@ export default{
 ; (function () {
     var portalActiveExternLinkComponent =
     `<template>
-    <div class="portalActive portalWrap">
-        <div class="title flex flex-align-items flex-justify-content-between myActiveTitle">
-           <div class="left">
-               <span class="text">校园活动</span>
+    <div class='portalActive portalWrap'>
+        <div class='title flex flex-align-items flex-justify-content-between myActiveTitle'>
+           <div class='left'>
+               <span class='text'>校园活动</span>
            </div>
-           <div class="right"  @click="toModule()" v-if="jumpUrl != ''">
+           <div class='right'  @click='toModule()' v-if='jumpUrl != '''>
                <span>更多</span>
            </div>
         </div>
-        <div class="container" style="min-height: 70px;box-sizing:border-box;">
-            <div class="active-list" 
-                @click="toAppointmentInfo('appointment.html/appointment/appointmentInfo/1')" 
-                v-show="activeFlag && active.name.length > 0">
-                <div class="active-content">
-                    <div style="border-radius:4px;min-height:160px;width: 100%;position: relative;">
+        <div class='container' style='min-height: 70px;box-sizing:border-box;'>
+            <div class='active-list' 
+                @click='toAppointmentInfo('appointment.html/appointment/appointmentInfo/1')' 
+                v-show='activeFlag && active.name.length > 0'>
+                <div class='active-content'>
+                    <div style='border-radius:4px;min-height:160px;width: 100%;position: relative;'>
                         <img 
-                            :src="sourceUrl + 'ueditor/imgPrefix/' + active.coverImgId + '/0'" 
-                            style="width:100%;border-radius:5px;"
-                            v-if="!(active.coverImgId == null || active.coverImgId == '')">
-                        <img src="https://xtaymydmyd.github.io/pictureLibrary/huodong.png" 
-                            style="width:100%;border-radius:5px;"
-                            v-if="active.coverImgId == null || active.coverImgId == ''">
+                            :src='sourceUrl + 'ueditor/imgPrefix/' + active.coverImgId + '/0'' 
+                            style='width:100%;border-radius:5px;'
+                            v-if='!(active.coverImgId == null || active.coverImgId == '')'>
+                        <img src='https://xtaymydmyd.github.io/pictureLibrary/huodong.png' 
+                            style='width:100%;border-radius:5px;'
+                            v-if='active.coverImgId == null || active.coverImgId == '''>
                     </div>
-                    <div class="active-content-title flex flex-justify-content-between flex-align-items">
-                        <div class="active-title" style="width:100%;">{{active.name}}</div>
+                    <div class='active-content-title flex flex-justify-content-between flex-align-items'>
+                        <div class='active-title' style='width:100%;'>{{active.name}}</div>
                     </div>
                 </div>
             </div>  
-            <div class="noActivityList flex flex-justify-content flex-align-items" v-show="activeFlag && active.name.length == 0">
-                <img src="https://xtaymydmyd.github.io/pictureLibrary/huodong.png" alt="">
+            <div class='noActivityList flex flex-justify-content flex-align-items' v-show='activeFlag && active.name.length == 0'>
+                <img src='https://xtaymydmyd.github.io/pictureLibrary/huodong.png' alt=''>
                 无相关活动
             </div>
         </div>
@@ -214,7 +214,7 @@ export default {
             if( constGlobal.isWeChat() ){
                 window.location.href = 'appointment.html#/appointment/appointmentList'
             }else{
-                common.openApp(this.jumpUrl + "/appointmentList")
+                common.openApp(this.jumpUrl + '/appointmentList')
             }
         },
         /**
@@ -223,10 +223,10 @@ export default {
         toAppointmentInfo:function(link){
              if(this.active.isSel == 0){
                 if( constGlobal.isWeChat()){
-                    window.location.href = "appointment.html#/appointment/appointmentInfo/1?id=" + this.active.bookingId + '&isCanBooking=' + this.active.isCanBooking + '&isExp=' + this.active.isExp; 
+                    window.location.href = 'appointment.html#/appointment/appointmentInfo/1?id=' + this.active.bookingId + '&isCanBooking=' + this.active.isCanBooking + '&isExp=' + this.active.isExp; 
                 }else{
                     if( this.jumpUrl != ''){
-                        common.openApp(  this.jumpUrl + "/appointmentInfo/1?id=" + this.active.bookingId + '&isCanBooking=' + this.active.isCanBooking + '&isExp=' + this.active.isExp )
+                        common.openApp(  this.jumpUrl + '/appointmentInfo/1?id=' + this.active.bookingId + '&isCanBooking=' + this.active.isCanBooking + '&isExp=' + this.active.isExp )
                     }
                 }
             }else{
@@ -243,7 +243,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang='css'>
 .portalWrap {
   background: white;
 }
